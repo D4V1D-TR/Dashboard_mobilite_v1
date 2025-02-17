@@ -1,0 +1,25 @@
+react-frontend/
+│── public/                    # Fichiers statiques (index.html, favicons...)
+│── src/
+│   ├── assets/                 # Images, icônes, styles globaux...
+│   │   ├── logo.svg            # Exemple d'icône
+│   │   ├── styles.css          # Autres styles globaux si besoin
+│   ├── components/             # Composants réutilisables (ex: Button, Card)
+│   │   ├── Card.jsx            # Composant de carte
+│   │   ├── Button.jsx          # Composant de bouton
+│   │   ├── Loader.jsx          # Composant de chargement
+│   ├── pages/                  # Pages principales (Dashboard, Users)
+│   │   ├── Dashboard.jsx       # Page du Dashboard
+│   │   ├── Users.jsx           # Page de la liste des utilisateurs
+│   ├── services/               # Gestion des appels API
+│   │   ├── api.js              # Fichier centralisant les appels API
+│   ├── layout/                 # Structure globale (Header, Sidebar...)
+│   │   ├── Header.jsx          # Barre de navigation supérieure
+│   │   ├── Sidebar.jsx         # Menu latéral
+│   ├── App.jsx                 # Point d'entrée principal (Routes et Layout)
+│   ├── main.jsx                # Rendu principal de l'application
+│   ├── index.css               # Styles globaux avec Tailwind
+│── index.html                  # Page web de base
+│── vite.config.js              # Configuration de Vite
+│── package.json                # Dépendances et scripts
+│── README.md                   # Documentation du projet
