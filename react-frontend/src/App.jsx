@@ -1,6 +1,5 @@
 import React from 'react'
-import Header from './layout/header3'
-import Button from './components/button'
+import Header from './layout/header'
 import Map from './components/map'
 
 function App() {

@@ -6,7 +6,7 @@ import 'leaflet/dist/leaflet.css';
 
 // Icônes personnalisées
 const bikeIcon = new L.Icon({
-    iconUrl: "https://cdn-icons-png.flaticon.com/512/9220/9220815.png",
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/5266/5266122.png",
     iconSize: [30, 30],
     iconAnchor: [15, 30],
     popupAnchor: [0, -30],

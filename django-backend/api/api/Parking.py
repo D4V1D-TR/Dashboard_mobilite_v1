@@ -41,7 +41,8 @@ class Parking(BaseAPI):
 
         df = pd.DataFrame(dictionnaire)
         df = df[df['places_disponibles'].notna()]
-        return df.where(pd.notnull(df), "")
+        df = df.where(pd.notnull(df), "")
+        return df[df["gestionnaire"] == "LPA"]
     
     def filtrer(self):
         pass
