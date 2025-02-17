@@ -19,7 +19,7 @@ const parkingIcon = new L.Icon({
     popupAnchor: [0, -30],
 });
 
-const Map = () => {
+const Map_mob = () => {
     const [velovStations, setVelovStations] = useState([]);
     const [parkings, setParkings] = useState([]);
 
@@ -36,8 +36,8 @@ const Map = () => {
     }, []);
 
     return (
-        <MapContainer center={[45.763696, 4.837443]} zoom={14} style={{ width: "100vw", height: "100vh" }}>
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <MapContainer center={[45.763696, 4.837443]} zoom={15} style={{ width: "100vw", height: "100vh" }}>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" detectRetina={true}/>
 
             {/* Stations Vélo'v */}
             {velovStations.map((station, index) => (
@@ -62,4 +62,4 @@ const Map = () => {
     );
 };
 
-export default Map;
+export default Map_mob;

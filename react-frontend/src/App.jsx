@@ -1,13 +1,16 @@
-import React from 'react'
-import Header from './layout/header'
-import Map from './components/map'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Accueil from "./pages/accueil"
+import Parking from "./pages/parking"
 
 function App() {
   return (
-    <main>
-      <Header/>
-      <Map/>
-    </main>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Accueil />} />
+        <Route path="/accueil" element={<Accueil />} />
+        <Route path="/parking" element={<Parking />} />
+      </Routes>
+    </Router>
   );
 }
 
