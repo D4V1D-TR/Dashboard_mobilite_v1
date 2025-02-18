@@ -6,7 +6,7 @@
     top: 0;                   /* Aligner en haut */
     left: 0;                  /* Aligner à gauche */
     width: 100%;              /* Prendre toute la largeur de la page */
-    z-index: 9999;            /* S'assurer qu'il est au-dessus des autres éléments */
+    z-index: 1100;            /* S'assurer qu'il est au-dessus des autres éléments */
     display: flex;            /* Utilisation de flexbox pour la barre */
     justify-content: flex-start; /* Aligner tout le contenu à gauche */
     align-items: center;      /* Centrer verticalement les éléments */
