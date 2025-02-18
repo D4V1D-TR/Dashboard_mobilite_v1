@@ -14,7 +14,8 @@ function Header() {
             
             <Navbar.Brand>Dashboard Mobilités</Navbar.Brand>
             <Nav.Link as={Link} to="/">Accueil</Nav.Link>
-            <Nav.Link as={Link} to="/parking">Parking</Nav.Link>       
+            <Nav.Link as={Link} to="/parking">Parking</Nav.Link>
+            <Nav.Link as={Link} to="/test">Test</Nav.Link>          
           </Nav>
         </Navbar.Collapse>
       </Container>
