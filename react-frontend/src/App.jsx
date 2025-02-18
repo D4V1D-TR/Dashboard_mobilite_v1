@@ -7,13 +7,26 @@ import Test from "./pages/test"
 function App() {
   return (
     <Router>
-      <Header /> {/* Rendre le Header globalement ici */}
-      <Routes>
-        <Route path="/" element={<Accueil />} />
-        <Route path="/accueil" element={<Accueil />} />
-        <Route path="/parking" element={<Parking />} />
-        <Route path="/test" element={<Test />} />
-      </Routes>
+      <div className="container">
+        <Header /> {/* Renders globally at the top */}
+        <div className="main-layout">
+          <nav className="nav"> {/* Optional navigation bar */}
+            <ul>
+              <li><a href="/accueil">Accueil</a></li>
+              <li><a href="/parking">Parking</a></li>
+              <li><a href="/test">Test</a></li>
+            </ul>
+          </nav>
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Accueil />} />
+              <Route path="/accueil" element={<Accueil />} />
+              <Route path="/parking" element={<Parking />} />
+              <Route path="/test" element={<Test />} />
+            </Routes>
+          </main>
+        </div>
+      </div>
     </Router>
   );
 }

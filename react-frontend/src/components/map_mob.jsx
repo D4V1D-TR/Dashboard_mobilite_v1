@@ -50,7 +50,7 @@ const Map_mob = () => {
             <div style={{
                 position: 'fixed',
                 top: '100px',
-                left: '20px',
+                left: '5px',
                 background: 'white',
                 padding: '10px',
                 borderRadius: '8px',
@@ -72,7 +72,7 @@ const Map_mob = () => {
             </div>
 
             {/* Map */}
-            <MapContainer center={[45.763696, 4.837443]} zoom={15} style={{ width: "100vw", height: "100vh" }}>
+            <MapContainer center={[45.763696, 4.837443]} zoom={15} style={{ width: "100vw", height: "90vh" }} zoomControl={false}>
                 <TileLayer url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" detectRetina={true} />
 
                 {/* Stations Vélo'v */}
