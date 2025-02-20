@@ -30,12 +30,12 @@ const Map_mob = () => {
 
     useEffect(() => {
         // Charger les stations Velov
-        axios.get("http://127.0.0.1:8000/api/velov/")
+        axios.get("http://192.168.2.27:8000/api/velov/")
             .then(response => setVelovStations(response.data))
             .catch(error => console.error("Erreur Velov:", error));
 
         // Charger les parkings
-        axios.get("http://127.0.0.1:8000/api/parking/")
+        axios.get("http://192.168.2.27:8000/api/parking/")
             .then(response => setParkings(response.data))
             .catch(error => console.error("Erreur Parking:", error));
     }, []);
@@ -72,7 +72,7 @@ const Map_mob = () => {
             </div>
 
             {/* Map */}
-            <MapContainer center={[45.763696, 4.837443]} zoom={15} style={{ width: "100vw", height: "90vh" }} zoomControl={false}>
+            <MapContainer center={[45.763696, 4.837443]} zoom={15} style={{ width: "100vw", height: "100vh" }} zoomControl={false}>
                 <TileLayer url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" detectRetina={true} />
 
                 {/* Stations Vélo'v */}
