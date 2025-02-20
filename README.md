@@ -21,3 +21,10 @@ mkdir test && cd test
 npm create vite@latest . --template react
 npm install
 ```
+
+```
+npm install
+npm install @mui/material @mui/icons-material
+npm install react-router-dom@6
+npm install @mui/joy
+```
