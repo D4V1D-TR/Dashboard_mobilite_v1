@@ -15,6 +15,13 @@ const bikeIcon = new L.Icon({
     popupAnchor: [0, -30],
 });
 
+const siege = new L.Icon({
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/4299/4299051.png",
+    iconSize: [40, 40],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30],
+});
+
 const parkingIcon = new L.Icon({
     iconUrl: "/logo.svg",
     iconSize: [30, 30],
@@ -75,12 +82,20 @@ const Map_mob = () => {
             <MapContainer center={[45.763696, 4.837443]} zoom={15} style={{ width: "100vw", height: "100vh" }} zoomControl={false}>
                 <TileLayer url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" detectRetina={true} />
 
+                <Marker position={[45.763696, 4.83735]} icon={siege}>
+                    <Popup>
+                        <b>Siège LPA</b> <br />
+                    </Popup>
+                </Marker>
+
                 {/* Stations Vélo'v */}
                 {filteredVelovStations.map((station, index) => (
                     <Marker key={index} position={[station.Latitude, station.Longitude]} icon={bikeIcon}>
                         <Popup>
                             <b>{station.Name}</b> <br />
-                            Vélos disponibles : {station.Available_bikes}
+                            Places dispo : {station.Available_bike_stands} <br/>
+                            Vélos mécaniques : {station.Mechanical_bikes} <br />
+                            Vélos électrique : {station.Elec_bikes} <br />
                         </Popup>
                     </Marker>
                 ))}

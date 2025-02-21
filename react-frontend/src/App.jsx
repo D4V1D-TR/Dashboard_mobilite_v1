@@ -3,7 +3,7 @@ import Header from "./layout/header"
 import Time from "./components/time"
 import Accueil from "./pages/accueil"
 import Parking from "./pages/parking"
-import Test from "./pages/test"
+import Test from "./pages/velov"
 
 function App() {
   return (
