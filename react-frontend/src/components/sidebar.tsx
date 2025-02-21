@@ -1,62 +1,35 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { Box, Drawer, Divider, IconButton } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
+import "../assets/sidebar.css"
 
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
 
-  const toggleDrawer = (newOpen: boolean) => () => {
+  const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <div className="header">
+        <img src="/logo.svg" alt="Logo" style={{ width: '80px', height: '80px', marginRight: '10px', marginLeft: '10px' }}/>
+        <h2>Dashboard Mobilités</h2>
+      </div>
+      <Divider/>
+
+      <Nav.Link as={Link} to="/">Accueil</Nav.Link>
+      <Nav.Link as={Link} to="/parking">Parking</Nav.Link>
+      <Nav.Link as={Link} to="/test">Test</Nav.Link>
       <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
     </Box>
   );
 
   return (
-    <div style={{
-      position: 'absolute',
-      top: '100px',
-      left: '20px',
-      color: 'black',
-      zIndex: 0
-    }}>
-      <Button onClick={toggleDrawer(true)}>Sidebar</Button>
+    <div>
+      <IconButton onClick={toggleDrawer(true)}><MenuIcon /></IconButton>
       <Drawer open={open} onClose={toggleDrawer(false)}>{DrawerList}</Drawer>
     </div>
   );

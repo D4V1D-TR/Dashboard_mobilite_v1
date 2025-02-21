@@ -49,8 +49,8 @@ const Map_mob = () => {
             {/* Checkbox Filter */}
             <div style={{
                 position: 'fixed',
-                top: '100px',
-                left: '5px',
+                top: '120px',
+                left: '10px',
                 background: 'white',
                 padding: '10px',
                 borderRadius: '8px',
