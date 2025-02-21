@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Header from "./layout/header"
+import Time from "./components/time"
 import Accueil from "./pages/accueil"
 import Parking from "./pages/parking"
 import Test from "./pages/test"
@@ -20,6 +21,7 @@ function App() {
           </main>
         </div>
       </div>
+      <Time/>
     </Router>
   );
 }
