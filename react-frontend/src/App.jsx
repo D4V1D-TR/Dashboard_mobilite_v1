@@ -3,7 +3,7 @@ import Header from "./layout/header"
 import Time from "./components/time"
 import Accueil from "./pages/accueil"
 import Parking from "./pages/parking"
-import Test from "./pages/velov"
+import Velov from "./pages/velov"
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
               <Route path="/" element={<Accueil />} />
               <Route path="/accueil" element={<Accueil />} />
               <Route path="/parking" element={<Parking />} />
-              <Route path="/test" element={<Test />} />
+              <Route path="/velov" element={<Velov />} />
             </Routes>
           </main>
         </div>
