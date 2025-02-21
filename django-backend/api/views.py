@@ -8,7 +8,7 @@ from api.api.Parking import Parking
 
 @api_view(["GET"])
 def velov_data(request):
-    data = Velov(url="https://api.jcdecaux.com/vls/v1/stations?contract=Lyon&apiKey=329f3a40cfa3609ae45bb672d065fb12028751ad", user_location=(45.763511657714844, 4.837132453918457)).main(filtrer="Y")
+    data = Velov(url="https://api.jcdecaux.com/vls/v3/stations?apiKey=frifk0jbxfefqqniqez09tw4jvk37wyf823b5j1i&contract=lyon", user_location=(45.763511657714844, 4.837132453918457)).main(filtrer="Y")
     data = data.to_dict(orient="records")
     return Response(data)
 

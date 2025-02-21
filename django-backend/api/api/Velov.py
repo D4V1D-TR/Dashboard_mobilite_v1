@@ -1,4 +1,3 @@
-
 from .Base import BaseAPI, pd, geodesic, re
 
 class Velov(BaseAPI):
@@ -12,18 +11,20 @@ class Velov(BaseAPI):
         stations_data = {
             'Name': [re.sub(r'^\d+ - ', '', station['name']) for station in data],
             'Address': [station['address'] for station in data],
-            'Latitude': [station['position']['lat'] for station in data],
-            'Longitude': [station['position']['lng'] for station in data],
-            'Bike_stands': [station['bike_stands'] for station in data],
-            'Available_bike_stands': [station['available_bike_stands'] for station in data],
-            'Available_bikes': [station['available_bikes'] for station in data],
+            'Latitude': [station['position']['latitude'] for station in data],
+            'Longitude': [station['position']['longitude'] for station in data],
+            'Bike_stands': [station['totalStands']['capacity'] for station in data],
+            'Available_bike_stands': [station['totalStands']['availabilities']['stands'] for station in data],
+            'Available_bikes': [station['totalStands']['availabilities']['bikes'] for station in data],
+            'Mechanical_bikes': [station['totalStands']['availabilities']['mechanicalBikes'] for station in data],
+            'Elec_bikes': [station['totalStands']['availabilities']['electricalBikes'] for station in data],
             'Status': [station['status'] for station in data]
         }
 
         self.df = pd.DataFrame(stations_data)
         return self.df
 
-    def filtrer(self,df):
-        df['Distance_to_user'] = df.apply(lambda row: round(geodesic(self.user_location, (row['Latitude'], row ['Longitude'])).meters), axis=1)
+    def filtrer(self, df):
+        df['Distance_to_user'] = df.apply(lambda row: round(geodesic(self.user_location, (row['Latitude'], row['Longitude'])).meters), axis=1)
         df = df[df['Distance_to_user'] <= self.radius]
         return df

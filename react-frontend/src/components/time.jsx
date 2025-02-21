@@ -5,12 +5,10 @@ const TimeBubble = () => {
 
   useEffect(() => {
     const timeInterval = setInterval(() => {setCurrentTime(new Date().toLocaleTimeString());}, 2*60*1000);
-    const refreshInterval = setInterval(() => {window.location.reload();}, 2*60*1000);
 
     // Cleanup: on démonte le composant, on nettoie les intervalles
     return () => {
       clearInterval(timeInterval);
-      clearInterval(refreshInterval);
     };
   }, []);
 
