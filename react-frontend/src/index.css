@@ -1,9 +1,8 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
+  font-family: 'Orbitron', 'Inter', sans-serif;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color:white;
+  background-color: white;
 }
 
 body {
@@ -17,4 +16,11 @@ html, body, #root, .map-container {
   z-index: 0;
 }
 
+.main-layout {
+  padding-top: 70px;
+}
+
+.main-content {
+  padding: 20px;
+}
 

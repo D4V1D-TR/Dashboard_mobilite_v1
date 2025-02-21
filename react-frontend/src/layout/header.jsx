@@ -1,20 +1,26 @@
-import { Link } from "react-router-dom"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import '../assets/header.css';
-import Sidebar from  "../components/sidebar"
+import '../assets/header.css'; // Assuming the updated CSS is here
+import Sidebar from "../components/sidebar";
 
 function Header() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
-    <Navbar expand="lg">
-      <Container>       
+    <Navbar expand="lg" className="navbar">
+      <Container>
         <Navbar.Collapse>
           <Nav className="me-auto">
-            <Sidebar/>
-            <img src="/logo.svg" alt="Logo" style={{ width: '80px', height: '80px', marginRight: '20px', marginLeft: '10px' }} />
-            
-            <Navbar.Brand>Dashboard Mobilités</Navbar.Brand>     
+            <Sidebar className={sidebarOpen ? "open" : "closed"} />
+            <img src="/logo.svg" alt="Logo" style={{width: '80px', height: '80px', marginRight: '20px', marginLeft: '10px', marginTop: '5px'}}/>
+            <Navbar.Brand className="navbar-brand">Dashboard Mobilités</Navbar.Brand>
           </Nav>
         </Navbar.Collapse>
       </Container>
