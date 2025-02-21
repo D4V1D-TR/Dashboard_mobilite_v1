@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -7,11 +6,7 @@ import '../assets/header.css'; // Assuming the updated CSS is here
 import Sidebar from "../components/sidebar";
 
 function Header() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
+  const [sidebarOpen] = useState(false);
 
   return (
     <Navbar expand="lg" className="navbar">
