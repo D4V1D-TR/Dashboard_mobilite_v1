@@ -1,54 +1,42 @@
-import * as React from 'react';
-import Table from '@mui/joy/Table';
+import * as React from "react";
+import axios from "axios";
+import Table from "@mui/joy/Table";
 
 export default function BasicTable() {
+  const [parkings, setParkings] = React.useState([]);
+
+  React.useEffect(() => {
+    axios
+      .get("http://192.168.2.27:8000/api/parking/")
+      .then((response) => setParkings(response.data))
+      .catch((error) => console.error("Erreur Parking:", error));
+  }, []);
+
   return (
-    <Table aria-label="basic table">
+    <Table>
       <thead>
         <tr>
-          <th style={{ width: '40%' }}>Dessert (100g serving)</th>
-          <th>Calories</th>
-          <th>Fat&nbsp;(g)</th>
-          <th>Carbs&nbsp;(g)</th>
-          <th>Protein&nbsp;(g)</th>
+          <th>Nom</th>
+          <th>Capacité</th>
+          <th>Places Disponibles</th>
+          <th>État du parc</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Frozen yoghurt</td>
-          <td>159</td>
-          <td>6</td>
-          <td>24</td>
-          <td>4</td>
-        </tr>
-        <tr>
-          <td>Ice cream sandwich</td>
-          <td>237</td>
-          <td>9</td>
-          <td>37</td>
-          <td>4.3</td>
-        </tr>
-        <tr>
-          <td>Eclair</td>
-          <td>262</td>
-          <td>16</td>
-          <td>24</td>
-          <td>6</td>
-        </tr>
-        <tr>
-          <td>Cupcake</td>
-          <td>305</td>
-          <td>3.7</td>
-          <td>67</td>
-          <td>4.3</td>
-        </tr>
-        <tr>
-          <td>Gingerbread</td>
-          <td>356</td>
-          <td>16</td>
-          <td>49</td>
-          <td>3.9</td>
-        </tr>
+        {parkings.length > 0 ? (
+          parkings.map((parking) => (
+            <tr key={parking.id}>
+              <td>{parking.nom}</td>
+              <td>{parking.nb_places}</td>
+              <td>{parking.places_disponibles}</td>
+              <td>{parking.etat}</td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="4">Chargement des données...</td>
+          </tr>
+        )}
       </tbody>
     </Table>
   );
