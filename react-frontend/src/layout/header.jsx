@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import '../assets/header.css'; // Assuming the updated CSS is here
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import "../assets/header.css"; // Assurez-vous que ce fichier contient bien le CSS
 import Sidebar from "../components/sidebar";
 
 function Header() {
@@ -10,17 +9,35 @@ function Header() {
 
   return (
     <Navbar expand="lg" className="navbar">
-      <Container fluid>
-        <Navbar.Collapse>
-          <Nav className="d-flex w-100 align-items-center">
-            <Sidebar className={sidebarOpen ? "open" : "closed"} />
-            <img src="/logo.svg" alt="Logo" style={{width: '80px', height: '80px', marginRight: '20px', marginLeft: '10px', marginTop: '5px'}}/>
-            <Navbar.Brand className="navbar-brand">Dashboard des Mobilités</Navbar.Brand>
-            <Navbar.Brand className="navbar-brand2 ms-auto">Une application créée et développée par le service Data</Navbar.Brand>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <div className="navbar-container">
+      {/* Bloc gauche */}
+      <Nav className="d-flex align-items-center">
+        <Sidebar className={sidebarOpen ? "open" : "closed"} />
+        <img
+          src="/logo.svg"
+          alt="Logo"
+          style={{
+            width: "80px",
+            height: "80px",
+            marginRight: "20px",
+            marginLeft: "10px",
+            marginTop: "5px",
+          }}
+        />
+        <Navbar.Brand className="navbar-brand">
+          Dashboard des Mobilités
+        </Navbar.Brand>
+      </Nav>
+
+      {/* Bloc droit */}
+      <Nav className="d-flex align-items-center">
+        <Navbar.Brand className="navbar-brand2">
+          Une application créée et développée par le service Data
+        </Navbar.Brand>
+      </Nav>
+    </div>
+  </Navbar>
+
   );
 }
 
