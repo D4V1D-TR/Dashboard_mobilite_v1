@@ -35,6 +35,14 @@
   transition: color 0.3s ease; /* Smooth color transition */
 }
 
+.navbar-brand2 {
+  font-size: 1rem;
+  font-style: normal;
+  color: #333;
+  margin-top: 10px;
+  transition: color 0.3s ease;
+}
+
 .navbar-brand:hover {
   color: #007bff; /* Change color on hover */
 }

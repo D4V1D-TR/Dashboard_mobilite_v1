@@ -27,4 +27,5 @@ npm install
 npm install @mui/material @mui/icons-material
 npm install react-router-dom@6
 npm install @mui/joy
+npm install @tomtom-international/web-sdk-maps @tomtom-international/web-sdk-services
 ```

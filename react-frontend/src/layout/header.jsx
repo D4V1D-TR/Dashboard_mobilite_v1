@@ -10,12 +10,13 @@ function Header() {
 
   return (
     <Navbar expand="lg" className="navbar">
-      <Container>
+      <Container fluid>
         <Navbar.Collapse>
-          <Nav className="me-auto">
+          <Nav className="d-flex w-100 align-items-center">
             <Sidebar className={sidebarOpen ? "open" : "closed"} />
             <img src="/logo.svg" alt="Logo" style={{width: '80px', height: '80px', marginRight: '20px', marginLeft: '10px', marginTop: '5px'}}/>
-            <Navbar.Brand className="navbar-brand">Dashboard Mobilités</Navbar.Brand>
+            <Navbar.Brand className="navbar-brand">Dashboard des Mobilités</Navbar.Brand>
+            <Navbar.Brand className="navbar-brand2 ms-auto">Une application créée et développée par le service Data</Navbar.Brand>
           </Nav>
         </Navbar.Collapse>
       </Container>
