@@ -21,8 +21,8 @@ mkdir test && cd test
 npm create vite@latest . --template react
 npm install
 ```
-
-```
+## Lancer l'installation des dépendances react
+```powershell
 npm install
 npm install @mui/material @mui/icons-material
 npm install react-router-dom@6
