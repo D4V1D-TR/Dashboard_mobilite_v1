@@ -95,9 +95,17 @@ const Map_mob = () => {
 
             {/* Map */}
             <MapContainer center={[45.763696, 4.837443]} zoom={15} style={{ width: "100vw", height: "100vh" }} zoomControl={false}>
-                <TileLayer url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" detectRetina={true} />
-                <TileLayer url="https://api.tomtom.com/traffic/map/4/tile/flow/relative0/{z}/{x}/{y}.png?tileSize=256&key=VxCzTOtWzXndWziX0Qrumq9AufSjwWV4" />
-                
+                {/* Fond de carte OpenStreetMap */}
+                <TileLayer 
+                    url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" 
+                    detectRetina={true} 
+                />
+                {/* Couche d'animation du trafic via TomTom */}
+                <TileLayer 
+                    url="https://api.tomtom.com/traffic/map/4/tile/flow/relative0/{z}/{x}/{y}.png?tileSize=256&key=VxCzTOtWzXndWziX0Qrumq9AufSjwWV4" 
+                />
+
+                {/* Marqueur Siège LPA */}
                 <Marker position={[45.763696, 4.83735]} icon={siege}>
                     <Popup>
                         <b>Siège LPA</b> <br />
@@ -109,7 +117,7 @@ const Map_mob = () => {
                     <Marker key={index} position={[station.Latitude, station.Longitude]} icon={bikeIcon}>
                         <Popup>
                             <b>{station.Name}</b> <br />
-                            Places dispo : {station.Available_bike_stands} <br/>
+                            Places dispo : {station.Available_bike_stands} <br />
                             Vélos mécaniques : {station.Mechanical_bikes} <br />
                             Vélos électriques : {station.Elec_bikes} <br />
                         </Popup>

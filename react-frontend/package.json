@@ -17,6 +17,7 @@
     "@tomtom-international/web-sdk-maps": "^6.25.0",
     "@tomtom-international/web-sdk-services": "^6.25.0",
     "axios": "^1.7.9",
+    "azure-maps-control": "^3.6.0",
     "bootstrap": "^5.3.3",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.475.0",
