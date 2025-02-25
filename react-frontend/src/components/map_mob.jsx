@@ -29,27 +29,38 @@ const parkingIcon = new L.Icon({
     popupAnchor: [0, -30],
 });
 
+const lpaAndCoIcon = new L.Icon({
+    iconUrl: "/lpaandco.png",
+    iconSize: [20, 20],
+    iconAnchor: [15, 30],
+    popupAnchor: [0, -30],
+});
+
 const Map_mob = () => {
     const [velovStations, setVelovStations] = useState([]);
     const [parkings, setParkings] = useState([]);
-    const [showLPA, setShowLPA] = useState(true);  // LPA checkbox state
-    const [showVelov, setShowVelov] = useState(true);  // Vélo'v checkbox state
+    const [lpaAndCo, setLpaAndCo] = useState([]);
+    const [showLPA, setShowLPA] = useState(true);
+    const [showVelov, setShowVelov] = useState(true);
+    const [showLpaAndCo, setShowLpaAndCo] = useState(true);
 
     useEffect(() => {
-        // Charger les stations Velov
         axios.get("http://192.168.2.27:8000/api/velov/")
             .then(response => setVelovStations(response.data))
             .catch(error => console.error("Erreur Velov:", error));
 
-        // Charger les parkings
         axios.get("http://192.168.2.27:8000/api/parking/")
             .then(response => setParkings(response.data))
             .catch(error => console.error("Erreur Parking:", error));
+        
+        axios.get("http://192.168.2.27:8000/api/lpaandco/")
+            .then(response => setLpaAndCo(response.data))
+            .catch(error => console.error("Erreur LPA and Co:", error));
     }, []);
 
-    // Filtrage des stations et parkings en fonction des checkboxes
     const filteredVelovStations = showVelov ? velovStations : [];
     const filteredParkings = showLPA ? parkings : [];
+    const filteredLpaAndCo = showLpaAndCo ? lpaAndCo : [];
 
     return (
         <div>
@@ -66,14 +77,18 @@ const Map_mob = () => {
                 color: 'black',
                 pointerEvents: 'auto'
             }}>
-                <FormControlLabel
+                <FormGroup>
+                    <FormControlLabel
                         control={<Checkbox checked={showLPA} onChange={() => setShowLPA(!showLPA)} />}
                         label="LPA"
                     />
-                <FormGroup>
                     <FormControlLabel
                         control={<Checkbox checked={showVelov} onChange={() => setShowVelov(!showVelov)} />}
                         label="Vélo'v"
+                    />
+                    <FormControlLabel
+                        control={<Checkbox checked={showLpaAndCo} onChange={() => setShowLpaAndCo(!showLpaAndCo)} />}
+                        label="LPA&Co"
                     />
                 </FormGroup>
             </div>
@@ -83,7 +98,6 @@ const Map_mob = () => {
                 <TileLayer url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" detectRetina={true} />
                 <TileLayer url="https://api.tomtom.com/traffic/map/4/tile/flow/relative0/{z}/{x}/{y}.png?tileSize=256&key=VxCzTOtWzXndWziX0Qrumq9AufSjwWV4" />
                 
-
                 <Marker position={[45.763696, 4.83735]} icon={siege}>
                     <Popup>
                         <b>Siège LPA</b> <br />
@@ -97,7 +111,7 @@ const Map_mob = () => {
                             <b>{station.Name}</b> <br />
                             Places dispo : {station.Available_bike_stands} <br/>
                             Vélos mécaniques : {station.Mechanical_bikes} <br />
-                            Vélos électrique : {station.Elec_bikes} <br />
+                            Vélos électriques : {station.Elec_bikes} <br />
                         </Popup>
                     </Marker>
                 ))}
@@ -108,6 +122,20 @@ const Map_mob = () => {
                         <Popup>
                             <b>{parking.nom}</b> <br />
                             Places disponibles : {parking.nb_places}
+                        </Popup>
+                    </Marker>
+                ))}
+
+                {/* LPA&Co */}
+                {filteredLpaAndCo.map((location, index) => (
+                    <Marker key={index} position={[location.lat, location.lon]} icon={lpaAndCoIcon}>
+                        <Popup>
+                            <b>{location.nom}</b> <br />
+                            Adresse : {location.adresse} <br />
+                            Tarif 1H : {location.tarif_1h} <br />
+                            Tarif 2H : {location.tarif_2h} <br />
+                            Tarif 24H : {location.tarif_24h} <br />
+                            Abo mensuel : {location.abo_mensuel} <br />
                         </Popup>
                     </Marker>
                 ))}
