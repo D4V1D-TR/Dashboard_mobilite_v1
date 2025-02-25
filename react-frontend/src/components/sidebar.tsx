@@ -23,6 +23,7 @@ export default function TemporaryDrawer() {
       <Nav.Link as={Link} to="/">Accueil</Nav.Link>
       <Nav.Link as={Link} to="/parking">Parking</Nav.Link>
       <Nav.Link as={Link} to="/velov">Velov</Nav.Link>
+      <Nav.Link as={Link} to="/lpaandco">LPA&Co</Nav.Link>
       <Divider />
     </Box>
   );
