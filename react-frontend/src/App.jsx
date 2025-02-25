@@ -4,6 +4,7 @@ import Time from "./components/time"
 import Accueil from "./pages/accueil"
 import Parking from "./pages/parking"
 import Velov from "./pages/velov"
+import LPA_and_co from "./pages/lpa_and_co"
 import Test from "./pages/test"
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
               <Route path="/accueil" element={<Accueil />} />
               <Route path="/parking" element={<Parking />} />
               <Route path="/velov" element={<Velov />} />
+              <Route path="/lpaandco" element={<LPA_and_co />} />
               <Route path="/test" element={<Test />} />
             </Routes>
           </main>
