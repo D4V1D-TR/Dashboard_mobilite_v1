@@ -14,7 +14,7 @@ const TimeBubble = () => {
 
   return (
     <div style={styles.bubble}>
-      Dernière mise à jour : {currentTime}
+      Mise à jour : {currentTime}
     </div>
   );
 };
