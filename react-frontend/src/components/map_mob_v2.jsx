@@ -1,13 +1,20 @@
 import 'leaflet/dist/leaflet.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 const Map = () => {
     const [velovStations, setVelovStations] = useState([]);
     const [parkings, setParkings] = useState([]);
     const [lpaAndCo, setLpaAndCo] = useState([]);
     const [map, setMap] = useState(null);
+    const [showLPA, setShowLPA] = useState(true);
+    const [showVelov, setShowVelov] = useState(true);
+    const [showLpaAndCo, setShowLpaAndCo] = useState(true);
 
+    
     // Chargement des données depuis l'API
     useEffect(() => {
         axios.get("http://192.168.2.27:8000/api/velov/")
@@ -238,7 +245,22 @@ const Map = () => {
     return (
         <div>
             <div id="myMap" style={{ width: '100%', height: '100vh' }}></div>
-        </div>
+            <div style={{position: 'fixed', top: '120px', left: '10px', background: 'white', padding: '10px', borderRadius: '8px',  boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', zIndex: 9999, color: 'black', pointerEvents: 'auto'}}>
+            <FormGroup>
+                <FormControlLabel
+                    control={<Checkbox checked={showLPA} onChange={() => setShowLPA(!showLPA)} />}
+                    label="LPA"
+                />
+                <FormControlLabel
+                    control={<Checkbox checked={showVelov} onChange={() => setShowVelov(!showVelov)} />}
+                    label="Vélo'v"
+                />
+                <FormControlLabel
+                    control={<Checkbox checked={showLpaAndCo} onChange={() => setShowLpaAndCo(!showLpaAndCo)} />}
+                    label="LPA&Co"
+                />
+            </FormGroup> </div>
+        </div>        
     );
 };
 
