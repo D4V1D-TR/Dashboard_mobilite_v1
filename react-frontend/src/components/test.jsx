@@ -32,10 +32,7 @@ const Test = () => {
                 center: [4.837443, 45.763696],
                 zoom: 13,
                 view: 'Auto',
-                authOptions: {
-                    authType: 'subscriptionKey',
-                    subscriptionKey: 'D06DI114hc8bfdz3AGsiucAZzSM5yEPoG2Tcx8Oek89NM3SJqXLNJQQJ99BBACi5Ypz2LawzAAAgAZMP188M',
-                },
+                authOptions: {authType: 'subscriptionKey', subscriptionKey: 'D06DI114hc8bfdz3AGsiucAZzSM5yEPoG2Tcx8Oek89NM3SJqXLNJQQJ99BBACi5Ypz2LawzAAAgAZMP188M'},
             });
 
             mapInstance.events.add('ready', function () {
@@ -70,19 +67,42 @@ const Test = () => {
         lpaAndCo.forEach(location => {data_co.add(new atlas.data.Point([location.lon, location.lat]));});
 
         // Création d'une couche de symbole pour afficher les marqueurs
-        map.imageSprite.add("parkingIcon", `${window.location.origin}/logo.svg`).then(() => {
+        map.imageSprite.add("parkingIcon", "/logo.png").then(() => {
             const symbolLayer = new atlas.layer.SymbolLayer(data_parking, null, {
                 iconOptions: {
-                    image: "parkingIcon",  
+                    image: "parkingIcon",
                     anchor: "center",
                     allowOverlap: true,
-                    iconSize: 1 // Taille de l’icône (Azure Maps utilise un scale, 1 = taille normale)
+                    iconSize: 0.5,
                 }
             });
             map.layers.add(symbolLayer);
-        });
+        }).catch(err => console.error("Erreur lors du chargement de l'image :", err));
         
+        map.imageSprite.add("lpaandco", "/lpaandco.png").then(() => {
+            const symbolLayer = new atlas.layer.SymbolLayer(data_co, null, {
+                iconOptions: {
+                    image: "lpaandco",
+                    anchor: "center",
+                    allowOverlap: true,
+                    iconSize: 0.5,
+                }
+            });
+            map.layers.add(symbolLayer);
+        }).catch(err => console.error("Erreur lors du chargement de l'image :", err)); 
 
+        map.imageSprite.add("velov", "/velov.png").then(() => {
+            const symbolLayer = new atlas.layer.SymbolLayer(data_velov, null, {
+                iconOptions: {
+                    image: "velov",
+                    anchor: "center",
+                    allowOverlap: true,
+                    iconSize: 0.5,
+                }
+            });
+            map.layers.add(symbolLayer);
+        }).catch(err => console.error("Erreur lors du chargement de l'image :", err)); 
+        
         // Configuration et ajout du trafic flow
         const trafficSource = new atlas.source.VectorTileSource(null, {
             tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
