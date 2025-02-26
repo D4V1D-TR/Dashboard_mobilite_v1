@@ -20,3 +20,8 @@ html, body, #root, .map-container {
   padding-top: 90px;
 }
 
+.popup {
+  color: black !important;
+  margin: 10px;
+  font-family: 'Orbitron', 'Inter', sans-serif;
+}

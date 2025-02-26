@@ -1,10 +1,10 @@
 import React from 'react'
-import Map_mob from '../components/map_mob'
+import Map from '../components/map_mob_v2'
 
 function Accueil() {
     return (
       <main>
-        <Map_mob/>  
+        <Map/>  
       </main>
     );
   }
