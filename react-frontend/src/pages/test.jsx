@@ -1,12 +1,23 @@
-import React from 'react'
-import Test from '../components/test'
+import React, { useState } from 'react';
+import Test from '../components/test';
 
 function Velov() {
-    return (
-      <main>
-        <Test/>
-      </main>
-    );
-  }
+  const [showLPA, setShowLPA] = useState(true);
+  const [showVelov, setShowVelov] = useState(true);
+  const [showLpaAndCo, setShowLpaAndCo] = useState(true);
 
-  export default Velov;
+  return (
+    <main>
+      <Test
+        showLPA={showLPA}
+        setShowLPA={setShowLPA}
+        showVelov={showVelov}
+        setShowVelov={setShowVelov}
+        showLpaAndCo={showLpaAndCo}
+        setShowLpaAndCo={setShowLpaAndCo}
+      />
+    </main>
+  );
+}
+
+export default Velov;
